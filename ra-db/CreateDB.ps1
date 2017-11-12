@@ -5,17 +5,13 @@
 # If you have not already logged into Azure from the CLI, run the following from the CLI
 # Login-AzureRmAccount
 
-# Get the database credentials from the variables file (file format: <VARIABLENAME> = "<VALUE>")
-$Path = ".\variables.txt"
-$values = Get-Content $Path | Out-String | ConvertFrom-StringData
-
-# The login information for the server (from variables.txt)
-$adminlogin = $values.admin_uid
-$password = $values.admin_pwd
-
 # The data center and resource name for your resources
 $resourcegroupname = "ra-db-rg"
 $location = "EastUS"
+
+# The login information for the server (substitute as needed)
+$adminlogin = "ra-db-admin"
+$password = "ComplexPassword123"
 
 # The logical server name: Use a random value or replace with your own value (do not capitalize)
 $servername = "ra-srv"
