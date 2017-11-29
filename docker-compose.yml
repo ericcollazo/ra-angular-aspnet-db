@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  site:
+    image:    ra-site:latest
+    networks:  
+      - app_net
+
+  api:
+    image:    ra-api:latest
+    networks:  
+      - app_net
+    secrets:  
+      - db_connect
+
+networks:
+  app_net:
+    driver:   overlay
+
+secrets:
+  db_connect:
+    file:     ./ra-api/sql_connect
