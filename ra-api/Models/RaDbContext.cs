@@ -24,7 +24,8 @@ namespace ra_api.Models
             if (!optionsBuilder.IsConfigured)
             {
                 // Read connection string from Docker Secret "db_connect"
-                string connString = System.IO.File.ReadAllText("/run/secrets/db_connect");
+                // string connString = System.IO.File.ReadAllText("/run/secrets/db_connect");
+                string connString = System.IO.File.ReadAllText("../ra-api/sql_connect.txt");
                 optionsBuilder.UseSqlServer(@connString);
             }
         }

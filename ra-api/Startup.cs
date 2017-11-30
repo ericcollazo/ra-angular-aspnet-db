@@ -8,11 +8,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using ra_api.Models;
 
 namespace ra_api
 {
     public class Startup
     {
+        RaDbContext _context = new RaDbContext();
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,6 +28,7 @@ namespace ra_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton(typeof(RaDbContext) ,_context);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
