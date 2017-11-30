@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ra-api.Models
+namespace ra_api.Models
 {
     public partial class SalesOrderHeader
     {
