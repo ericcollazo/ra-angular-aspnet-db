@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Server=tcp:<SERVER NAME>.database.windows.net,1433;Initial Catalog=<DATABASE NAME>;Persist Security Info=False;User ID=<USER ID>;Password=<PASSWORD>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" Microsoft.EntityFrameworkCore.SqlServer -o Models -f -c RaDbContext
