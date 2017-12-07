@@ -21,10 +21,10 @@ namespace ra_api.Controllers
 
         // GET: Product
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public JsonResult Index()
         {
-            var raDbContext = _context.Product.Include(p => p.ProductCategory).Include(p => p.ProductModel);
-            return View(await raDbContext.ToListAsync());
+            var raDbContext = _context.Product;
+            return Json(raDbContext.ToList());
         }
 
         // GET: Product/Details/5
