@@ -25,7 +25,7 @@ export class ProductService {
   }
 
   getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(this.serviceUrl + "/${id}")
+    return this.http.get<Product>(this.serviceUrl + `/${id}`)
     .pipe(
       catchError(this.handleError<Product>(`getProduct id=${id}`))
     );

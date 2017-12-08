@@ -21,31 +21,29 @@ namespace ra_api.Controllers
 
         // GET: Product
         [HttpGet]
-        public JsonResult Index()
+        public IActionResult Index()
         {
             var raDbContext = _context.Product;
-            return Json(raDbContext.ToList());
+            return new JsonResult(raDbContext.ToList());
         }
 
-        // GET: Product/Details/5
+        // GET: Product/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Product
-                .Include(p => p.ProductCategory)
-                .Include(p => p.ProductModel)
+            var product = _context.Product
                 .SingleOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            return new JsonResult(product);
         }
 
         // GET: Product/Create
