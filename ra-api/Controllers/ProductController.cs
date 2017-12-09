@@ -37,7 +37,7 @@ namespace ra_api.Controllers
             }
 
             var product = _context.Product
-                .SingleOrDefaultAsync(m => m.ProductId == id);
+                .SingleOrDefault(m => m.ProductId == id);
             if (product == null)
             {
                 return NotFound();
@@ -58,6 +58,7 @@ namespace ra_api.Controllers
         // POST: Product/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductId,Name,ProductNumber,Color,StandardCost,ListPrice,Size,Weight,ProductCategoryId,ProductModelId,SellStartDate,SellEndDate,DiscontinuedDate,ThumbNailPhoto,ThumbnailPhotoFileName,Rowguid,ModifiedDate")] Product product)

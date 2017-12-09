@@ -40,6 +40,10 @@ namespace ra_api
                     });
             });
             services.AddMvc();
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAllOrigins"));
+            });
             services.AddSingleton(typeof(RaDbContext) ,_context);
         }
 
