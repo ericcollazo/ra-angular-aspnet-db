@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,6 +55,7 @@ namespace ra_api
                 app.UseDeveloperExceptionPage();
             }
             
+            // Needed to enable cross-site api calls.
             app.UseCors("AllowAllOrigins");
             app.UseMvc();
         }
