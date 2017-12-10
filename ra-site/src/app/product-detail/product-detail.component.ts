@@ -15,7 +15,7 @@ export class ProductDetailComponent implements OnInit {
 
   @Input() product: Product;
   
-  constructor(  private route: ActivatedRoute, private productService: ProductService, private location: Location) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private location: Location) { }
 
   ngOnInit() {
     this.getProduct();
