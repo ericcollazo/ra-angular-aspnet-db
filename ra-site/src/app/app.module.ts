@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductService } from './serrvices/product.service';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { ProductService } from './serrvices/product.service';
     AppComponent,
     DashboardComponent,
     ProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    SidebarComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,

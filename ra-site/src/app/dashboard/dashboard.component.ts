@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../model/product';
 import { ProductService } from '../serrvices/product.service';
+import {DomSanitizer} from '@angular/platform-browser';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +12,14 @@ import { ProductService } from '../serrvices/product.service';
 export class DashboardComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+   }
 
   ngOnInit() {
     this.getProducts();
   }
 
   getProducts(): void {
-    this.productService.getProducts()
-      .subscribe(products => this.products = products.slice(1, 5));
-  }
+    this.productService.getProducts().subscribe(products => this.products = products.slice(1, 5));
+    }
 }
