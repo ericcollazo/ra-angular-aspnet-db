@@ -1,10 +1,29 @@
-<div>
-    <h2>List of Products:</h2>
-    <ul class="products">
-        <li *ngFor="let product of products">
-            <a routerLink="/detail/{{product.productId}}">
-                <span class="badge">{{product.productId}}</span>{{product.name}}
-            </a>
-        </li>
-    </ul>
+<div class="w3-row-padding">
+    <div class="w3-container w3-col">
+        <h5 c>Products</h5>
+        <table class="w3-table-all w3-hoverable w3-white w3-card-4">
+            <tr class="w3-light-grey">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Color</th>
+            <th class="w3-right">List Price</th>
+            </tr>
+            <tr *ngFor="let product of products">
+                <td>
+                    <a routerLink="/detail/{{product.productId}}">
+                        <span class="w3-tag">{{product.productId}}</span>
+                    </a>
+                </td>
+                <td>
+                    {{product.name}}
+                </td>
+                <td>
+                    {{product.color}}
+                </td>
+                <td class="w3-right">
+                    {{product.listPrice | currency:"$"}}
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

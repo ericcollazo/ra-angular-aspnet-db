@@ -1,33 +1,54 @@
-<div *ngIf = "product">
-    <h3>{{ product.name }} Details</h3>
-    <div><span>id: {{product.productId}}</span></div>
-    <div>
-        <label>Name:
-            <input [(ngModel)] = "product.name" placeholder="name">
-        </label>
+<div class="w3-row-padding w3-third">
+    <h4>Product Details</h4>
+    <div class="w3-container w3-col w3-card-4">
+        <div *ngIf = "product">
+            <div class="w3-container w3-cell">
+                <h4><b>{{ product.name }}</b></h4>
+                <div>
+                    <p>
+                        <label>ID: 
+                            <b>{{product.productId}}</b>
+                        </label>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <label>Name:
+                            <b>{{product.name}}</b>
+                        </label>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <label>Product Number:
+                            <b>{{product.productNumber}}</b>
+                        </label>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <label>Color:
+                            <b>{{product.color}}</b>
+                        </label>
+                    </p>
+                    </div>
+                <div>
+                    <p>
+                        <label>List Price:
+                            <b>{{product.listPrice | currency:"$"}}</b>
+                        </label>
+                    </p>
+                </div>
+            </div>
+            <div class="w3-container w3-cell w3-cell-middle">
+                <div>
+                    <img class="w3-image w3-border w3-padding" src="data:image/gif;base64,{{product.thumbNailPhoto}}">
+                </div>
+                <br>
+                <div>
+                    <button class="w3-button w3-white w3-round-xxlarge w3-border w3-border-black" (click)="goBack()">go back</button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>Product Number:
-            {{product.productNumber}}
-        </label>
-    </div>
-    <div>
-        <label>Color:
-            {{product.color}}
-        </label>
-    </div>
-    <div>
-        <label>List Price:
-            {{product.listPrice}}
-        </label>
-    </div>
-    <div>
-        <label>Image:
-            <img src="data:image/gif;base64,{{product.thumbNailPhoto}}">
-        </label>
-    </div>
-</div>
-<br>
-<div>
-    <button (click)="goBack()">go back</button>
 </div>
