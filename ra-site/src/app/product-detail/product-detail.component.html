@@ -1,9 +1,11 @@
 <div class="w3-row-padding w3-third">
-    <h4>Product Details</h4>
-    <div class="w3-container w3-col w3-card-4">
+    <h2>Product Details</h2>
+    <div class="w3-card-4">
         <div *ngIf = "product">
+            <header class="w3-container w3-blue">
+                <h4>{{ product.name }}</h4>
+            </header>
             <div class="w3-container w3-cell">
-                <h4><b>{{ product.name }}</b></h4>
                 <div>
                     <p>
                         <label>ID: 
@@ -42,7 +44,7 @@
             </div>
             <div class="w3-container w3-cell w3-cell-middle">
                 <div>
-                    <img class="w3-image w3-border w3-padding" src="data:image/gif;base64,{{product.thumbNailPhoto}}">
+                    <img class="w3-image w3-border" src="data:image/gif;base64,{{product.thumbNailPhoto}}">
                 </div>
                 <br>
                 <div>

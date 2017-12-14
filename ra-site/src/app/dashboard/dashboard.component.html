@@ -1,54 +1,51 @@
-<header class="w3-container" style="padding-top:22px">
-    <h5><b>Top Products</b></h5>
-</header>
-
 <div class="w3-row-padding w3-margin-bottom module product">
+  <h2>Dashboard</h2>
   <div class="w3-quarter">
     <div class="w3-container w3-red w3-padding-16">
       <a [routerLink] = "['/detail/' + products[0]?.productId]">
         <div class="w3-left"><img src="data:image/gif;base64,{{products[0]?.thumbNailPhoto}}" class="w3-xxxlarge"/></div>
-        <div class="w3-right">
-          <h3>{{products[0]?.listPrice | currency:"USD$"}}</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>{{products[0]?.name}}</h4>
       </a>
+      <div class="w3-right">
+        <h3>{{products[0]?.listPrice | currency:"USD$"}}</h3>
+      </div>
+      <div class="w3-clear"></div>
+      <h4>{{products[0]?.name}}</h4>
     </div>
   </div>
   <div class="w3-quarter">
     <div class="w3-container w3-blue w3-padding-16">
       <a routerLink="/detail/{{products[1]?.productId}}">
         <div class="w3-left"><img src="data:image/gif;base64,{{products[1]?.thumbNailPhoto}}" w3-xxxlarge></div>
-        <div class="w3-right">
-          <h3>{{products[1]?.listPrice | currency:"USD$"}}</h3>
-        </div>
-        <div class="w3-clear"></div>
-          <h4>{{products[1]?.name}}</h4>
       </a>
+      <div class="w3-right">
+        <h3>{{products[1]?.listPrice | currency:"USD$"}}</h3>
+      </div>
+      <div class="w3-clear"></div>
+      <h4>{{products[1]?.name}}</h4>
     </div>
   </div>
   <div class="w3-quarter">
     <div class="w3-container w3-teal w3-padding-16">
       <a routerLink="/detail/{{products[2]?.productId}}">
         <div class="w3-left"><img src="data:image/gif;base64,{{products[2]?.thumbNailPhoto}}" w3-xxxlarge></div>
-        <div class="w3-right">
-          <h3>{{products[2]?.listPrice | currency:"USD$"}}</h3>
-        </div>
-        <div class="w3-clear"></div>
-          <h4>{{products[2]?.name}}</h4>
       </a>
+      <div class="w3-right">
+        <h3>{{products[2]?.listPrice | currency:"USD$"}}</h3>
+      </div>
+      <div class="w3-clear"></div>
+      <h4>{{products[2]?.name}}</h4>
     </div>
   </div>
   <div class="w3-quarter">
     <div class="w3-container w3-orange w3-text-white w3-padding-16">
       <a routerLink="/detail/{{products[3]?.productId}}">
         <div class="w3-left"><img src="data:image/gif;base64,{{products[3]?.thumbNailPhoto}}" w3-xxxlarge></div>
-        <div class="w3-right">
-          <h3>{{products[3]?.listPrice | currency:"USD$"}}</h3>
-        </div>
-        <div class="w3-clear"></div>
-          <h4>{{products[3]?.name}}</h4>
       </a>
+      <div class="w3-right">
+        <h3>{{products[3]?.listPrice | currency:"USD$"}}</h3>
+      </div>
+      <div class="w3-clear"></div>
+      <h4>{{products[3]?.name}}</h4>
     </div>
   </div>
 </div>
