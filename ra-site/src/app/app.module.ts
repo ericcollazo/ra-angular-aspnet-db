@@ -11,6 +11,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductService } from './serrvices/product.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainComponent } from './main/main.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { MainComponent } from './main/main.component';
     ProductDetailComponent,
     SidebarComponent,
     MainComponent,
+    FooterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
