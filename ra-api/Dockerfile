@@ -20,6 +20,6 @@ WORKDIR /app
 COPY --from=build-env /app/out .
 
 ## Expose port
-EXPOSE 80
+EXPOSE 5000
 
 ENTRYPOINT ["dotnet", "ra-api.dll"]
