@@ -34,3 +34,5 @@ COPY --from=builder /ng-app/dist /usr/share/nginx/html
 
 ## Run nginx server
 CMD ["nginx", "-g", "daemon off;"]
+
+EXPOSE 8080
