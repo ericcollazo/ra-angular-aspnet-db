@@ -10,24 +10,31 @@ import { PRODUCTS } from '../model/mock-products';
 @Injectable()
 export class ProductService {
 
-  private serviceUrl = "http://localhost:5000/api/product";
+  private serviceUrl = '';
   private retVal: Observable<Product[]>;
 
   constructor(private http: HttpClient) {
-
+      this.getApiUrl().subscribe(apiUrl => this.serviceUrl = apiUrl);
    }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.serviceUrl)
+    return this.http.get<Product[]>(this.serviceUrl+"/product")
     .pipe(
       catchError(this.handleError('getProducts', []))
     );
   }
 
   getProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(this.serviceUrl + `/${id}`)
+    return this.http.get<Product>(this.serviceUrl + `/product/${id}`)
     .pipe(
       catchError(this.handleError<Product>(`getProduct id=${id}`))
+    );
+  }
+
+  private getApiUrl(): Observable<string> {
+    return this.http.get<string>(`/api_connect`)
+    .pipe(
+      catchError(this.handleError<string>(`getApiUrl`))
     );
   }
 

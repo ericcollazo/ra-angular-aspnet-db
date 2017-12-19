@@ -11,6 +11,8 @@ services:
       - "4200:80"
     deploy:
       replicas: 1
+    configs:
+      - api_connect
 
   api:
     image: raangularaspnetdb_api:latest
@@ -30,3 +32,7 @@ networks:
 secrets:
   db_connect:
     file: ./ra-api/sql_connect.txt
+
+configs:
+  api_connect:
+    file: ./ra-site/api_connect.txt
