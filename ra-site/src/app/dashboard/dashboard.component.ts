@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../model/product';
-import { ProductService } from '../serrvices/product.service';
+import { ProductService } from '../services/product.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import { forEach } from '@angular/router/src/utils/collection';
 

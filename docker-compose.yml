@@ -2,14 +2,20 @@ version: '3.3'
 
 services:
   site:
-    image:    ra-site:latest
+    image: ra-site:latest
+    depends_on:
+      - api
     networks:  
       - app_net
+    ports:
+      - "4200"
 
   api:
-    image:    ra-api:latest
+    image: ra-api:latest
     networks:  
       - app_net
+    ports:
+      - "5000"
     secrets:  
       - db_connect
 
@@ -19,4 +25,4 @@ networks:
 
 secrets:
   db_connect:
-    file:     ./ra-api/sql_connect
+    file: ./ra-api/sql_connect.txt
