@@ -13,7 +13,6 @@ RUN dotnet restore
 # copy everything else and build
 COPY . ./
 RUN dotnet publish -c Release -o out
-COPY ./sql_connect.txt ./out
 
 # build runtime image
 FROM microsoft/aspnetcore:2.0
