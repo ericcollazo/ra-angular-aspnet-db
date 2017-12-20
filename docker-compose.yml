@@ -12,7 +12,8 @@ services:
     deploy:
       replicas: 1
     configs:
-      - api_connect
+      - source: apiUrl.json
+        target: /usr/share/nginx/html/assets/apiUrl.json
 
   api:
     image: raangularaspnetdb_api:latest
@@ -34,5 +35,5 @@ secrets:
     file: ./ra-api/sql_connect.txt
 
 configs:
-  api_connect:
-    file: ./ra-site/api_connect.txt
+  apiUrl.json:
+    file: ./ra-site/apiUrl.json

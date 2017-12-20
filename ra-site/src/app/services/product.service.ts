@@ -4,21 +4,27 @@ import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
+import { ConfigSettings } from '../model/ConfigSettings';
 import { Product } from '../model/product';
-import { PRODUCTS } from '../model/mock-products';
 
 @Injectable()
 export class ProductService {
 
-  private serviceUrl = '';
-  private retVal: Observable<Product[]>;
-
+  private serviceUrl: string;
+  
   constructor(private http: HttpClient) {
-      this.getApiUrl().subscribe(apiUrl => this.serviceUrl = apiUrl);
-   }
+    this.getApiUrl().subscribe(settings => this.serviceUrl = settings.apiUrl);
+  }  
+
+  private getApiUrl(): Observable<ConfigSettings> {
+    return this.http.get<ConfigSettings>(`assets/apiUrl.json`)
+    .pipe(
+      catchError(this.handleError<ConfigSettings>('getApiUrl'))
+    );
+  }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.serviceUrl+"/product")
+    return this.http.get<Product[]>(this.serviceUrl+`/product`)
     .pipe(
       catchError(this.handleError('getProducts', []))
     );
@@ -28,13 +34,6 @@ export class ProductService {
     return this.http.get<Product>(this.serviceUrl + `/product/${id}`)
     .pipe(
       catchError(this.handleError<Product>(`getProduct id=${id}`))
-    );
-  }
-
-  private getApiUrl(): Observable<string> {
-    return this.http.get<string>(`/api_connect`)
-    .pipe(
-      catchError(this.handleError<string>(`getApiUrl`))
     );
   }
 
