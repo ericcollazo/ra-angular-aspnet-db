@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClientXsrfModule} from '@angular/common/http';
 
@@ -9,13 +9,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductService } from './services/product.service';
+import { ConfigService } from './services/config.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { Observable } from 'rxjs/Observable';
 import { ConfigSettings } from './model/ConfigSettings';
-
+import { InjectionToken } from '@angular/core/src/di/injection_token';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,13 @@ import { ConfigSettings } from './model/ConfigSettings';
     HttpClientModule,
     HttpClientXsrfModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (configService: ConfigService) => function() {return configService.load()},
+      deps: [ConfigService],
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 
