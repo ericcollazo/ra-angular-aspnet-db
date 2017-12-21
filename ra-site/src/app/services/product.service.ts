@@ -3,25 +3,17 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
-import { ConfigSettings } from '../model/ConfigSettings';
 import { Product } from '../model/product';
 
 @Injectable()
 export class ProductService {
 
-  private serviceUrl: string;
+  private serviceUrl = environment.apiUrl;
   
   constructor(private http: HttpClient) {
-    this.getApiUrl().subscribe(settings => this.serviceUrl = settings.apiUrl);
   }  
-
-  private getApiUrl(): Observable<ConfigSettings> {
-    return this.http.get<ConfigSettings>(`assets/apiUrl.json`)
-    .pipe(
-      catchError(this.handleError<ConfigSettings>('getApiUrl'))
-    );
-  }
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.serviceUrl+`/product`)

@@ -13,6 +13,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { Observable } from 'rxjs/Observable';
+import { ConfigSettings } from './model/ConfigSettings';
 
 
 @NgModule({
@@ -36,4 +38,6 @@ import { HeaderComponent } from './header/header.component';
   providers: [ProductService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule { 
+}

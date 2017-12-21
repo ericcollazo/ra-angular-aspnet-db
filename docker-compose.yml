@@ -11,9 +11,6 @@ services:
       - "4200:80"
     deploy:
       replicas: 1
-    configs:
-      - source: apiUrl.json
-        target: /usr/share/nginx/html/assets/apiUrl.json
 
   api:
     image: raangularaspnetdb_api:latest
@@ -33,7 +30,3 @@ networks:
 secrets:
   db_connect:
     file: ./ra-api/sql_connect.txt
-
-configs:
-  apiUrl.json:
-    file: ./ra-site/apiUrl.json

@@ -1,7 +1,7 @@
 <div class="w3-row-padding w3-margin-bottom module product">
   <h2>Dashboard</h2>
   <div class="w3-quarter">
-    <div class="w3-container w3-red w3-padding-16">
+    <div class="w3-container w3-red w3-padding-16 w3-card-4">
       <a [routerLink] = "['/detail/' + products[0]?.productId]">
         <div class="w3-left"><img src="data:image/gif;base64,{{products[0]?.thumbNailPhoto}}" class="w3-xxxlarge"/></div>
       </a>
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="w3-quarter">
-    <div class="w3-container w3-blue w3-padding-16">
+    <div class="w3-container w3-blue w3-padding-16 w3-card-4">
       <a routerLink="/detail/{{products[1]?.productId}}">
         <div class="w3-left"><img src="data:image/gif;base64,{{products[1]?.thumbNailPhoto}}" w3-xxxlarge></div>
       </a>
@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="w3-quarter">
-    <div class="w3-container w3-teal w3-padding-16">
+    <div class="w3-container w3-teal w3-padding-16 w3-card-4">
       <a routerLink="/detail/{{products[2]?.productId}}">
         <div class="w3-left"><img src="data:image/gif;base64,{{products[2]?.thumbNailPhoto}}" w3-xxxlarge></div>
       </a>
@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="w3-quarter">
-    <div class="w3-container w3-orange w3-text-white w3-padding-16">
+    <div class="w3-container w3-orange w3-padding-16 w3-card-4">
       <a routerLink="/detail/{{products[3]?.productId}}">
         <div class="w3-left"><img src="data:image/gif;base64,{{products[3]?.thumbNailPhoto}}" w3-xxxlarge></div>
       </a>
