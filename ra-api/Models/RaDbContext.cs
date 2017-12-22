@@ -23,8 +23,12 @@ namespace ra_api.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+                // Use this connections string when scaffolding with "dotnet aspnet-codegenerator" or testing api outside of Docker
+                // string connString = System.IO.File.ReadAllText("./sql_connect.txt");
+
                 // Read connection string from Docker Secret "db_connect"
                 string connString = System.IO.File.ReadAllText("../run/secrets/db_connect");
+                
                 optionsBuilder.UseSqlServer(@connString);
             }
         }

@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   site:
-    image: raangularaspnetdb_site:latest
+    image: ra_site:latest
     depends_on:
       - api
     networks:  
@@ -16,7 +16,7 @@ services:
         target: /usr/share/nginx/html/assets/apiUrl.json
 
   api:
-    image: raangularaspnetdb_api:latest
+    image: ra_api:latest
     networks:  
       - app_net
     ports:
