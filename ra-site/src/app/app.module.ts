@@ -17,6 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { Observable } from 'rxjs/Observable';
 import { ConfigSettings } from './model/ConfigSettings';
 import { InjectionToken } from '@angular/core/src/di/injection_token';
+import { TopSalesService } from './services/top-sales.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { InjectionToken } from '@angular/core/src/di/injection_token';
     HttpClientModule,
     HttpClientXsrfModule
   ],
-  providers: [ProductService, ConfigService,
+  providers: [ProductService,TopSalesService,  ConfigService,
     {
       provide: APP_INITIALIZER,
       useFactory: (configService: ConfigService) => function() {return configService.load()},

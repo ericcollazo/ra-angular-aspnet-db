@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Product} from '../model/product';
-import {PRODUCTS} from '../model/mock-products';
 import {ProductService} from '../services/product.service';
 
 @Component({

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../model/product';
-import { ProductService } from '../services/product.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import { forEach } from '@angular/router/src/utils/collection';
+
+import { TopSales } from '../model/top-sales';
+import { TopSalesService } from '../services/top-sales.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,9 +11,9 @@ import { forEach } from '@angular/router/src/utils/collection';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  products: Product[] = [];
+  topSales: TopSales[] = [];
 
-  constructor(private productService: ProductService) {
+  constructor(private topSalesService: TopSalesService) {
    }
 
   ngOnInit() {
@@ -20,6 +21,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.productService.getProducts().subscribe(products => this.products = products.slice(1, 5));
+    this.topSalesService.getTopSales().subscribe(ts => this.topSales = ts.slice(1, 5));
     }
 }

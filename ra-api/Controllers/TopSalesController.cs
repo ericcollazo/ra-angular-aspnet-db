@@ -22,12 +22,14 @@ namespace ra_api.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var query = from Header in _context.SalesOrderHeader 
+            var query = from x in
+                (from Header in _context.SalesOrderHeader 
                 join Detail in _context.SalesOrderDetail  on Header.SalesOrderId equals Detail.SalesOrderId
-                join OrderProduct in _context.Product on Detail.ProductId equals OrderProduct.ProductId
-                group Header by new { Header.TotalDue, OrderProduct.Name } into productGroup
-                orderby productGroup.Key.TotalDue descending
-                select new { Name = productGroup.Key.Name, TotalSales = productGroup.Sum(t => t.TotalDue) };
+                group Detail by new { Detail.ProductId } into productGroup
+                select new { productGroup.Key, TotalSales = productGroup.Sum(s => s.OrderQty * s.UnitPrice) })
+                join OrderProduct in _context.Product on x.Key.ProductId equals OrderProduct.ProductId
+                orderby x.TotalSales descending
+                select new { ProductId = OrderProduct.ProductId, Name = OrderProduct.Name, TotalSales = x.TotalSales };
 
             return new JsonResult(query.ToList());
         }
