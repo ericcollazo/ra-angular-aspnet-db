@@ -17,7 +17,7 @@ export class TopSalesService {
   }  
 
   getTopSales(): Observable<TopSales[]> {
-    return this.http.get<TopSales[]>(this.serviceUrl+`/topsales`)
+    return this.http.get<TopSales[]>(this.serviceUrl+`/topsales/4`)
     .pipe(
       catchError(this.handleError('getTopSales', []))
     );
