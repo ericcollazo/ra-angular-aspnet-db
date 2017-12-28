@@ -1,5 +1,5 @@
-# Azure subscription name
-Add-AzureAccount
+# Login to Azure
+Login-AzureRmAccount
 
 # The resource name for your resources
 $resourcegroupname = "ra-db-rg"
