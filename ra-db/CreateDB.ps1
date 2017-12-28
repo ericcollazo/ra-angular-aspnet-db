@@ -2,9 +2,6 @@
 # Install-Module AzureRM -AllowClobber
 # Import-Module AzureRM
 
-# If you have not already logged into Azure from the CLI, run the following from the CLI
-# Login-AzureRmAccount
-
 # The data center and resource name for your resources
 $resourcegroupname = "ra-db-rg"
 $location = "EastUS"
@@ -23,6 +20,9 @@ $endip = "255.255.255.255"
 # The database name
 $databasename = "ra-db"
 
+# Azure subscription name
+Add-AzureAccount
+
 # Create resource group
 New-AzureRmResourceGroup -Name $resourcegroupname -Location $location
 
@@ -32,10 +32,13 @@ New-AzureRmSqlServer -ResourceGroupName $resourcegroupname `
 -Location $location `
 -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 
-# Create firewall rule for SQL management
+# Create firewall rules for SQL management
 New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 -ServerName $servername `
 -FirewallRuleName "AllowSome" -StartIpAddress $startip -EndIpAddress $endip
+
+New-AzureSqlDatabaseServerFirewallRule -ServerName $servername `
+-AllowAllAzureServices
 
 # Create sample database
 New-AzureRmSqlDatabase  -ResourceGroupName $resourcegroupname `
