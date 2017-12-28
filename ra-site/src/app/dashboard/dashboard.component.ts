@@ -21,6 +21,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.topSalesService.getTopSales().subscribe(ts => this.topSales = ts.slice(0, 4));
+    this.topSalesService.getTopSales().subscribe(ts => this.topSales = ts);
     }
 }
