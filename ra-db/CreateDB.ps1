@@ -21,7 +21,7 @@ $endip = "255.255.255.255"
 $databasename = "ra-db"
 
 # Azure subscription name
-Add-AzureAccount
+Login-AzureRmAccount
 
 # Create resource group
 New-AzureRmResourceGroup -Name $resourcegroupname -Location $location
