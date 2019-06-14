@@ -1,8 +1,8 @@
 version: '3.3'
 
 services:
-  site:
-    image: ra-site:latest
+  ra-site:
+    image: ra-site
     networks:  
       - app_net
     ports:
@@ -13,12 +13,12 @@ services:
       - source: apiUrl.json
         target: /usr/share/nginx/html/assets/apiUrl.json
 
-  api:
-    image: ra-api:latest
+  ra-api:
+    image: ra-api
     networks:  
       - app_net
     ports:
-      - "5000:80"
+      - "4300:80"
     secrets:  
       - db_connect
     deploy:

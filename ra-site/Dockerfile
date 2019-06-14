@@ -1,7 +1,7 @@
 ### STAGE 1: Build ###
 
 ## We label our stage as ‘builder’
-FROM node:8.1.4-alpine as builder
+FROM node as builder
 
 ## Copy to container root folder
 COPY package.json ./
@@ -21,7 +21,7 @@ RUN $(npm bin)/ng build --prod
 ### STAGE 2: Setup ###
 
 ## Use nginx as web server
-FROM nginx:1.13.3-alpine
+FROM nginx
 
 ## Copy our default nginx config
 COPY nginx/default.conf /etc/nginx/conf.d/
@@ -34,5 +34,3 @@ COPY --from=builder /ng-app/dist /usr/share/nginx/html
 
 ## Run nginx server
 CMD ["nginx", "-g", "daemon off;"]
-
-EXPOSE 4200
